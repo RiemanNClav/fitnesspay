@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroSaaS Fitness - Automatiza tus Cobros</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0066ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #0066ff, #0099ff);
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            background: linear-gradient(135deg, #0066ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Pain Points */
+        .pain-section {
+            background: #0a0a0a;
+            padding: 80px 0;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .pain-section h2 {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .pain-card {
+            background: #000000;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #1a1a1a;
+        }
+
+        .pain-card h3 {
+            color: #ff4444;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .pain-card p {
+            color: #a0a0a0;
+            line-height: 1.8;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            padding: 80px 0;
+        }
+
+        .solution-section h2 {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .solution-section .subtitle {
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 20px;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #001a33, #003366);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid #0066ff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: #b3d9ff;
+            line-height: 1.7;
+        }
+
+        /* How it Works */
+        .how-section {
+            background: #0a0a0a;
+            padding: 80px 0;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .how-section h2 {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #0066ff, #0099ff);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .step-content p {
+            color: #a0a0a0;
+            line-height: 1.7;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 80px 0;
+            background: #0a0a0a;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .pricing-section h2 {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .pricing-section .subtitle {
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 18px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: #000000;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #1a1a1a;
+            position: relative;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: #0066ff;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #0066ff;
+            background: linear-gradient(180deg, #001a33 0%, #000000 100%);
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: linear-gradient(135deg, #0066ff, #0099ff);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .plan-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: #0099ff;
+            margin-bottom: 5px;
+        }
+
+        .price span {
+            font-size: 20px;
+            color: #a0a0a0;
+        }
+
+        .price .currency {
+            font-size: 16px;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .price-alt {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .plan-desc {
+            color: #a0a0a0;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+
+        .features-list li {
+            color: #e0e0e0;
+            padding: 10px 0;
+            line-height: 1.6;
+        }
+
+        .plan-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(135deg, #0066ff, #0099ff);
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .plan-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+        }
+
+        .cta-button-large {
+            background: linear-gradient(135deg, #0066ff, #0099ff);
+            color: white;
+            padding: 18px 48px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #1a1a1a;
+            padding: 40px 0;
+            text-align: center;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .pain-section h2,
+            .solution-section h2,
+            .how-section h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">💪 FitnessPay</div>
+                <a href="#" class="cta-button">Lista de Espera</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Deja de perseguir pagos.<br>Enfócate en <span class="highlight">tu servicio</span>.</h1>
+                <p>El único sistema que reúne todos tus cobros en un solo lugar y te avisa automáticamente cuando alguien no paga.</p>
+                <a href="https://tally.so/r/wAVOdW" class="cta-button-large">Unirme a la Lista de Espera</a>
+            </div>
+        </section>
+
+        <section class="pain-section">
+            <div class="container">
+                <h2>¿Te suena familiar?</h2>
+                <div class="pain-grid">
+                    <div class="pain-card">
+                        <h3>❌ Pagos dispersos por todos lados</h3>
+                        <p>Transferencias, Stripe, depósitos en efectivo... Pierdes horas tratando de recordar quién pagó y quién no.</p>
+                    </div>
+                    <div class="pain-card">
+                        <h3>❌ Excel eternos e imposibles</h3>
+                        <p>Actualizas hojas de cálculo manualmente, se te olvida marcar pagos y terminas cobrando de más o de menos.</p>
+                    </div>
+                    <div class="pain-card">
+                        <h3>❌ WhatsApp = caos total</h3>
+                        <p>"¿Ya pagaste?" "Te envié el comprobante hace 3 días" — Conversaciones perdidas, comprobantes que nunca encuentras.</p>
+                    </div>
+                    <div class="pain-card">
+                        <h3>❌ Clientes que "se olvidan" de pagar</h3>
+                        <p>No renovaron, no avisaron, y tú te enteras 2 semanas después cuando ya llevas 4 sesiones gratis.</p>
+                    </div>
+                    <div class="pain-card">
+                        <h3>❌ Pérdida de ingresos constante</h3>
+                        <p>Cada mes pierdes dinero porque no tienes tiempo de hacer seguimiento a todos. Es agotador.</p>
+                    </div>
+                    <div class="pain-card">
+                        <h3>❌ Tu tiempo vale oro</h3>
+                        <p>Eres coach, no contador. Deberías estar enfocado en el servicio a tus clientes, no persiguiendo pagos toda la semana.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="solution-section">
+            <div class="container">
+                <h2>Tu asistente financiero automático</h2>
+                <p class="subtitle">Todo lo que necesitas para cobrar sin estrés</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Un solo dashboard</h3>
+                        <p>Todos tus pagos reunidos. Stripe, transferencia, efectivo. Todo en un lugar, actualizado en tiempo real.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔗</div>
+                        <h3>Links de pago automáticos</h3>
+                        <p>Crea un plan, genera el link y envíalo. El cliente paga con tarjeta o sube su comprobante. Sin WhatsApp intermedio.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⏰</div>
+                        <h3>Recordatorios automáticos</h3>
+                        <p>El sistema avisa a tus clientes antes de vencer, cuando fallan pagos o cuando están inactivos. Sin que muevas un dedo.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💳</div>
+                        <h3>Cobra como quieras</h3>
+                        <p>Tarjeta con Stripe, transferencia bancaria o efectivo. El sistema registra todo y te muestra el estado actualizado.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔔</div>
+                        <h3>Notificaciones inteligentes</h3>
+                        <p>Te avisamos cuando alguien paga, cuando suben un comprobante o cuando un cliente está por vencer. Nunca más se te escapa nada.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>Métricas claras</h3>
+                        <p>Ingresos totales, clientes activos, pendientes de pago. Toda la info que necesitas en segundos, no en hojas de Excel.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-section">
+            <div class="container">
+                <h2>Funciona así de simple</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Crea tu cuenta y planes de pago</h3>
+                            <p>Define los montos, periodicidad y nombre de tus planes. En minutos tienes todo configurado.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Envía links de pago a tus clientes</h3>
+                            <p>El sistema genera links automáticos. Tus clientes pagan con tarjeta o suben comprobante de transferencia.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>El sistema actualiza todo solo</h3>
+                            <p>Los pagos se registran automáticamente. Tarjeta, transferencia o efectivo. Todo aparece en tu dashboard.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Recordatorios y alertas automáticas</h3>
+                            <p>El sistema envía mensajes a clientes morosos y te notifica cuando hay algo importante. Sin que hagas nada.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Tú solo entrenas y cobras</h3>
+                            <p>Ya no pierdes tiempo persiguiendo pagos. El sistema trabaja por ti 24/7. Tú te enfocas en lo que amas: entrenar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-section">
+            <div class="container">
+                <h2>Elige tu plan</h2>
+                <p class="subtitle">Sin contratos. Cancela cuando quieras.</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="plan-icon">💪</div>
+                        <h3>Basic</h3>
+                        <div class="price">$29 <span class="currency">USD</span><span>/mes</span></div>
+                        <div class="price-alt">o $100 USD pago único</div>
+                        <p class="plan-desc">Ideal para coaches independientes.</p>
+                        <ul class="features-list">
+                            <li>✔️ Hasta 15 clientes activos</li>
+                            <li>✔️ Registro de pagos centralizado</li>
+                            <li>✔️ Automatización básica de recordatorios</li>
+                            <li>✔️ Dashboard personal</li>
+                        </ul>
+                        <a href="https://tally.so/r/wAVOdW" class="plan-button">Unirme a la Lista</a>
+                    </div>
+
+                    <div class="pricing-card featured">
+                        <div class="badge">Más Popular</div>
+                        <div class="plan-icon">⚡</div>
+                        <h3>Pro</h3>
+                        <div class="price">$59 <span class="currency">USD</span><span>/mes</span></div>
+                        <div class="price-alt">o $1,000 USD personalizado</div>
+                        <p class="plan-desc">Perfecto para equipos pequeños o estudios.</p>
+                        <ul class="features-list">
+                            <li>✔️ Hasta 50 clientes activos</li>
+                            <li>✔️ Todo lo del plan Basic</li>
+                            <li>✔️ Flujos automatizados vía WhatsApp</li>
+                            <li>✔️ Soporte técnico y personalización</li>
+                            <li>✔️ Integración directa con Stripe</li>
+                        </ul>
+                        <a href="https://tally.so/r/wAVOdW" class="plan-button">Unirme a la Lista</a>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="plan-icon">🏆</div>
+                        <h3>Elite</h3>
+                        <div class="price">$119 <span class="currency">USD</span><span>/mes</span></div>
+                        <div class="price-alt">Clientes ilimitados</div>
+                        <p class="plan-desc">Diseñado para academias o negocios grandes.</p>
+                        <ul class="features-list">
+                            <li>✔️ Clientes ilimitados</li>
+                            <li>✔️ Todo lo del plan Pro</li>
+                            <li>✔️ Branding personalizado (logo, dominio)</li>
+                            <li>✔️ Notificaciones avanzadas y reportes</li>
+                            <li>✔️ Soporte dedicado y mantenimiento</li>
+                        </ul>
+                        <a href="https://tally.so/r/wAVOdW" class="plan-button">Unirme a la Lista</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Automatiza tus cobros hoy</h2>
+                <p>Únete a la lista de espera y sé de los primeros en acceder.</p>
+                <a href="https://tally.so/r/wAVOdW" class="cta-button-large">Unirme a la Lista de Espera →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 FitnessPay. Hecho para coaches que valoran su tiempo.</p>
+        </div>
+    </footer>
+</body>
+</html>
